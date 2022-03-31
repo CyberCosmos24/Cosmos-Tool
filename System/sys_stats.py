@@ -3,7 +3,7 @@ import psutil
 import humanfriendly
 @click.command()
 @click.option('--task', default='all', help='all, cpu or ram')
-def get_stats(task):
+def sys_stats(task):
   click.echo('getting stats %s' % task)
   if (task == 'cpu' or task == 'all'):
     cpu_stats = f'Count: {psutil.cpu_count()}\n Usage: {psutil.cpu_percent()}'
@@ -14,4 +14,4 @@ def get_stats(task):
     click.echo(ram_stats)
 
 if __name__ == '__main__':
-  get_stats()
+  sys_stats()
