@@ -1,5 +1,5 @@
 # Cosmos-Tool
-Some tools that I have created over the past year. This is still a work in progess and updates may be slow. 
+Some python scripts that I have created. This is still a work in progess and updates may be slow. 
 
 ## How to run these files? 
 
