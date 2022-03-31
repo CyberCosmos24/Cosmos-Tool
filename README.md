@@ -6,4 +6,4 @@ Some tools that I have created over the past year. This is still a work in proge
 ```
 /PROJECTS/Comsos-Tool/[FOLDERNAME]# python3 [file]
 ``` 
-You can you use python or python3 to run these files but python3 is prefered.
+You can use python or python3 to run these files but python3 is prefered.
