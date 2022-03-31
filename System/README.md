@@ -2,6 +2,6 @@
 
 
 ## Requirements 
-• python3 
-• click 
-• psutil
+- python3 
+- click 
+- psutil
