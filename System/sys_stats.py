@@ -1,17 +1,43 @@
-import click
-import psutil
-import humanfriendly
-@click.command()
-@click.option('--task', default='all', help='all, cpu or ram')
-def sys_stats(task):
-  click.echo('getting stats %s' % task)
-  if (task == 'cpu' or task == 'all'):
-    cpu_stats = f'Count: {psutil.cpu_count()}\n Usage: {psutil.cpu_percent()}'
-    click.echo(cpu_stats)
-  if (task == 'ram' or task == 'all'):
-    ram_stats = f'Total: {psutil.virtual_memory().total}\n Used: {psutil.virtual_memory().available}'
-   
-    click.echo(ram_stats)
+import psutil 
+import humanfriendly 
+import sys
+import arrow
+import os
 
-if __name__ == '__main__':
-  sys_stats()
+
+
+system = f'{sys.platform.upper()}'
+start = f'{arrow.get(psutil.boot_time()).humanize()}'
+cpu_clock = psutil.cpu_freq()
+cpu_clock = round(cpu_clock.current, 2) if cpu_clock else '???'
+cpu_count = f'{psutil.cpu_count()} ({psutil.cpu_count(logical=False)})'
+cpu_usage = f'{psutil.cpu_percent()}%'
+cpu_clock = f'{cpu_clock} MHz'
+avail_mem = psutil.virtual_memory().available
+total_mem = psutil.virtual_memory().total
+used_mem = humanfriendly.format_size(total_mem - avail_mem, binary=True)
+total_mem = humanfriendly.format_size(total_mem, binary=True)
+
+
+
+
+
+print('CPU Information')
+print('===============================')
+print(f'CPU Cores: {cpu_count}' )
+print(f'CPU Usage: {cpu_usage}')
+print(f'CPU Clock: {cpu_clock}')
+print('===============================')
+print('RAM Information')
+print('===============================')
+print(f'Used: {used_mem}')
+print(f'Total: {total_mem}')
+print('===============================')
+print('System Information')
+print('===============================')
+print(f'Platform: {system}') 
+print(f'Started: {start}')
+print('===============================')
+
+
+
